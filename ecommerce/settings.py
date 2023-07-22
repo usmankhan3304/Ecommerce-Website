@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-# EXTERNAL_APPS= ['']
-# INSTALLED_APPS += EXTERNAL_APPS
+EXTERNAL_APPS= ['products']
+INSTALLED_APPS += EXTERNAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
