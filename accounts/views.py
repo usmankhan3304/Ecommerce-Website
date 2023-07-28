@@ -43,9 +43,9 @@ def register_page(request):
             return HttpResponseRedirect(request.path_info)
         
         user = User.objects.create(first_name=first_name,last_name=last_name,email=email,username=email)
-        user.set_password(password)
-        user.save()
-        messages.success(request,"an email has been sent")
+        # user.set_password(password)
+        # user.save()
+        messages.success(request,"An email has been sent")
         
         return HttpResponseRedirect(request.path_info)
         # return redirect('register_page')

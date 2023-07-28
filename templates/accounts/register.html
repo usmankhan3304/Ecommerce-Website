@@ -11,7 +11,7 @@
           <form method="post">
             {% csrf_token %}
             {% include 'base/alert.html' %}
-            
+
             <div class="form-group">
                  <input type="text"  required name="firstname" class="form-control" placeholder="FirstName" >
               </div> 
@@ -23,7 +23,7 @@
                 <input type="email" name="email" required  class="form-control" placeholder="Email" >
               </div>
               <div class="form-group">
-                <input type="password" required name="Password" class="form-control" placeholder="Password">
+                <input type="password" required name="password" class="form-control" placeholder="Password">
               </div>
            <!-- form-group// -->
               
