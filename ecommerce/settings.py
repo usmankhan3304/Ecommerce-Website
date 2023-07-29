@@ -15,7 +15,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-TEMPLATE_DIR = os.path.join(BASE_DIR ,'templates')
+TEMPLATE_DIR =os.path.join(BASE_DIR,'templates')
 
 
 
@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-=bhj3d5q0v8+%n6wkgpv8c+ton_az!b$$8i@q1y1x155sqykk5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-EXTERNAL_APPS = ['products','accounts']
+EXTERNAL_APPS= ['products','accounts','home']
 INSTALLED_APPS += EXTERNAL_APPS
 
 MIDDLEWARE = [
@@ -120,28 +120,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-# STATIC_ROOT='staticfiles'
-
-
+STATIC_ROOT='staticfiles'
 STATIC_URL = 'static/'
 
-# STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 
 STATICFILES_DIR={
-    os.path.join(BASE_DIR, 'public/static')
+    os.path.join(BASE_DIR,'public/static')
 }
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT=os.path.join(BASE_DIR,'public/static')
 
-MEDIA_URL ='/media/'
+MEDIA_URL='/media/'
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST= 'smtp.gmail.com'
 EMAIL_USE_TLS = True

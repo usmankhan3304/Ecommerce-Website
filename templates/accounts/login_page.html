@@ -9,13 +9,15 @@
           <div class="card-body">
           <h4 class="card-title mb-4">Sign in</h4>
           <form method="post">
+            
                 {% csrf_token %}
+                {% include 'base/alert.html' %}
           <div class="form-group">
-                 <input name="email" class="form-control" placeholder="Username" type="text">
+                 <input type="email" name="email" class="form-control" placeholder="Username" >
               </div> 
               <!-- form-group// -->
               <div class="form-group">
-                <input name="password" class="form-control" placeholder="Password" type="password">
+                <input type="password" name="password" class="form-control" placeholder="Password" >
               </div> <!-- form-group// -->
               
               <div class="form-group">

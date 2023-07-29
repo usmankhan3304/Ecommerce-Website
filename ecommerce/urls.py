@@ -22,8 +22,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    
+    path('', include('home.urls')),
     path('accounts/' , include('accounts.urls')),
+     path('admin/', admin.site.urls),
  
 ]
 
@@ -32,4 +34,4 @@ if settings.DEBUG:
                               document_root=settings.MEDIA_ROOT)
 
 
-urlpatterns += staticfiles_urlpatterns("public")
+urlpatterns += staticfiles_urlpatterns()

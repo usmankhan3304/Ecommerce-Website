@@ -17,13 +17,15 @@ class UserProfile(BaseModel):
 @receiver(post_save, sender= User)
 def send_email_token(sender,instance,created, **kwargs):
     try:
-        print(sender)
-        print(instance)
-        print(created)
         if created:
             email_token = str(uuid.uuid4().hex)
             print("email token is",email_token)
-            email = instance.email
+            # print(instance)
+            # print(sender)
+            # print(created)
+            UserProfile.objects.create(user=instance,email_token = email_token)#here we created the userprofile 
+            email = instance.email#this email is from the
+            #user model 
             send_account_verification_email(email,email_token)
 
 
