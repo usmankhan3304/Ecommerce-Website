@@ -43,8 +43,13 @@
     </div> <!-- rating-wrap.// -->
     
     <div class="mb-3"> 
-        <var class="price h4">${{products.price}}.00</var> 
-        
+      
+        <var class="price h4">
+          {% if updated_price  %}
+          ${{updated_price}}.00
+          {% else %}
+          ${{products.price}}.00</var> 
+          {% endif %}
     </div> <!-- price-detail-wrap .// -->
     
     <p>{{products.produtct_description}}</p>
@@ -63,6 +68,7 @@
     </dl>
     
     <hr>
+    
         <div class="form-row">
             <div class="form-group col-md flex-grow-0">
                 <label>Quantity</label>
@@ -79,13 +85,17 @@
             {% if products.size_varient.count %} 
 
                <div class="form-group col-md">
-
+                    {%if selected_size %}
+                      {{selected_size}}
+                    {% else %}
                     <label>Select size</label>
+                    {% endif %}
                     <div class="mt-1">
                       {% for i in products.size_varient.all  %}
                         <label class="custom-control custom-radio custom-control-inline">
-                          <input type="radio" onchange= "get_price('{{i.size_name}}')" name="select_size" checked="" class="custom-control-input">
-                          <div class="custom-control-label">{{i.size_name}}</div>
+                          <input type="radio" name="select_size" onchange= "get_price('{{i.size_name}}')" {%if selected_size == i.size_name %}  checked="  " {% endif %}class="custom-control-input">
+
+                          <div class="custom-control-label">{{i.size_name}} </div>
                         </label>
                  {% endfor %}
                         
@@ -112,7 +122,7 @@
     </section>
     <script>
     function get_price(size){
-      alert(size)
+      window.location.href = window.location.pathname +`?size=${size}`;
     }
   </script>
 {% endblock  %}

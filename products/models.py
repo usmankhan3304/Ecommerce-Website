@@ -39,8 +39,15 @@ class Products(BaseModel):
     def save(self, *args, **kwargs):
        self.slug=slugify(self.product_name)
        super(Products, self).save(*args, **kwargs) # Call the real save() method
+    def get_product_price_by_size(self,size):
+        
+        new_price=SizeVarient.objects.get(size_name = size)
+        return self.price + new_price.price
+        
     def __str__(self):
         return self.product_name
+    
+  
     
 class productsImages(BaseModel):
    product=models.ForeignKey(Products, on_delete=models.CASCADE,related_name="products_images")
