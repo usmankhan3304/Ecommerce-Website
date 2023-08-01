@@ -13,6 +13,8 @@ class UserProfile(BaseModel):
     is_email_verified=models.BooleanField(default=False)
     email_token=models.CharField( max_length=100,null=True,blank=True)
     profile_iamge=models.ImageField( upload_to='profile' )
+    def __str__(self):
+        return self.user.first_name
 
 @receiver(post_save, sender= User)
 def send_email_token(sender,instance,created, **kwargs):
@@ -20,9 +22,9 @@ def send_email_token(sender,instance,created, **kwargs):
         if created:
             email_token = str(uuid.uuid4().hex)
             print("email token is",email_token)
-            # print(instance)
-            # print(sender)
-            # print(created)
+            print(instance)
+            print(sender)
+            print(created)
             UserProfile.objects.create(user=instance,email_token = email_token)#here we created the userprofile 
             email = instance.email#this email is from the
             #user model 
